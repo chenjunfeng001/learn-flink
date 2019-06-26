@@ -1,0 +1,11 @@
+/target/
+.settings
+.idea
+target/
+data/
+
+.project
+.classpath
+.factorypath
+*.iml
+/.idea/workspace.xml
