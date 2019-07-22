@@ -35,6 +35,9 @@ under the License.
 		<scala.binary.version>2.11</scala.binary.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
+
+		<jedis.version>3.0.1</jedis.version>
+
 	</properties>
 
 	<repositories>
@@ -69,14 +72,11 @@ under the License.
 
 		<!-- Add connector dependencies here. They must be in the default scope (compile). -->
 
-		<!-- Example:
-
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-connector-kafka-0.10_${scala.binary.version}</artifactId>
 			<version>${flink.version}</version>
 		</dependency>
-		-->
 
 		<!-- Add logging framework, to produce console output when running in the IDE. -->
 		<!-- These dependencies are excluded from the application JAR by default. -->
@@ -91,6 +91,11 @@ under the License.
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis.version}</version>
 		</dependency>
 	</dependencies>
 
