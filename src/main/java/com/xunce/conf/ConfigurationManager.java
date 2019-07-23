@@ -2,6 +2,8 @@ package com.xunce.conf;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -13,15 +15,21 @@ public class ConfigurationManager {
 
 	private static Properties prop = new Properties();
 
-	static {
+	public static void init(String args){
+		InputStream inputStream = null;
 		try {
-
-			InputStream in = ConfigurationManager.class
-					.getClassLoader()
-					.getResourceAsStream("my.properties");
-			prop.load(in);
+			inputStream = new FileInputStream("my.properties");
+			prop.load(inputStream);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if(inputStream !=null){
+				try {
+					inputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 
@@ -37,42 +45,7 @@ public class ConfigurationManager {
 		return property;
 	}
 
-	/**
-	 * 获取整数类型的配置项
-	 */
-	public static Integer getInteger(String key) {
-		String value = getProperty(key);
-		try {
-			return Integer.valueOf(value);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
-
-	/**
-	 * 获取布尔类型的配置项
-	 */
-	public static Boolean getBoolean(String key) {
-		String value = getProperty(key);
-		try {
-			return Boolean.valueOf(value);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	/**
-	 * 获取Long类型的配置项
-	 */
-	public static Long getLong(String key) {
-		String value = getProperty(key);
-		try {
-			return Long.valueOf(value);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return 0L;
+	public static void main(String[] args) {
+		
 	}
 }

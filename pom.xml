@@ -37,6 +37,9 @@ under the License.
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 
 		<jedis.version>3.0.1</jedis.version>
+		<fastjson.version>1.2.54</fastjson.version>
+		<joda-time.version>2.9.9</joda-time.version>
+		<lettuce.version>5.1.6.RELEASE</lettuce.version>
 
 	</properties>
 
@@ -69,6 +72,22 @@ under the License.
 			<version>${flink.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- Flink Table & SQL-->
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-table_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-scala_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-streaming-scala_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
 
 		<!-- Add connector dependencies here. They must be in the default scope (compile). -->
 
@@ -97,7 +116,31 @@ under the License.
 			<artifactId>jedis</artifactId>
 			<version>${jedis.version}</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+        </dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.lettuce</groupId>
+			<artifactId>lettuce-core</artifactId>
+			<version>${lettuce.version}</version>
+		</dependency>
+
+    </dependencies>
 
 	<build>
 		<plugins>
