@@ -1,17 +1,14 @@
 package com.xunce.utils;
 
-import com.alibaba.fastjson.JSONObject;
-import com.google.common.collect.Lists;
-import com.xc.risk.conf.ConfigurationManager;
-import com.xc.risk.constant.Constants;
+import com.xunce.conf.ConfigurationManager;
+import com.xunce.constants.Constants;
 import io.lettuce.core.*;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.async.RedisAsyncCommands;
 import io.lettuce.core.support.ConnectionPoolSupport;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
+import org.apache.flink.shaded.guava18.com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -218,27 +215,10 @@ public class RedisSentinelAsync {
         RedisSentinelAsync.hset(0, key, field, value);
     }
 
-    public static void saveDataset2Redis(String key, Dataset<Row> ds) {
-        List<String> stringList = ds.toJSON().collectAsList();
-        //转成 list 后遍历
-        for (String str : stringList) {
-            JSONObject obj = JSONObject.parseObject(str);
-            saveDatasetByHash(key, SnowflakeUUID.getInstance().uuid() + "", str);
-        }
-
-    }
 
     public static void main(String[] args) throws InterruptedException {
 
         System.out.println(args[0]);
-        // 获取配置文件
-        if(args.length < 1){
-            System.err.println("无配置文件！");
-            System.exit(1);
-        }
-        ConfigurationManager.init(args[0]);
-        String password = ConfigurationManager.getProperty(Constants.REDIS_PASSWORD);
-        System.out.println(password);
 
         String thgregister = RedisSentinelAsync.hget(0, "thgregister", "20090109,59058");
         System.out.println(thgregister);

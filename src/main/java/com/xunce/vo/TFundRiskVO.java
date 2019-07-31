@@ -8,29 +8,29 @@ import java.math.BigDecimal;
 /**
  * @author ：junfeng.chen@xuncetech.com
  * @date ：2019/6/24
- * 产品规则表
+ * 产品规则汇总表
  */
 @Data
 public class TFundRiskVO implements Serializable {
 
-    private Long BATCH_NUMBER;
+    private Long batchNumber;
 
-    private Integer MARK_NUMBER = 0;
+    private Integer markNumber = 0;
     /**
-     * 日期
+     * 持仓日期
      */
-    private Integer L_DATE;
+    private Integer lDate;
     /**
      * 产品序号
      */
-    private Integer L_FUND_ID;
+    private Integer lFundId;
     /**
      * 总资产
      */
-    private BigDecimal TOTAL_ASSET = BigDecimal.ZERO;
+    private BigDecimal totalAsset = BigDecimal.ZERO;
     /**
      * 净资产
      */
-    private BigDecimal NET_ASSET = BigDecimal.ZERO;
+    private BigDecimal netAsset = BigDecimal.ZERO;
 
 }

@@ -1,7 +1,8 @@
 package com.xunce.utils;
 
-import com.google.common.collect.Lists;
-import com.xc.risk.conf.ConfigurationManager;
+
+import com.xunce.conf.ConfigurationManager;
+import org.apache.flink.shaded.guava18.com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.*;
