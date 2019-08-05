@@ -42,14 +42,34 @@ public interface Constants<struct> {
     String Options = "9";
 
     /**
+     * 单点模式 Standalone
+     */
+    String STANDALONE = "Standalone";
+    /**
+     * 哨兵模式 Sentinel
+     */
+    String SENTINEL = "Sentinel";
+    /**
+     * 集群模式 Cluster
+     */
+    String CLUSTER = "Cluster";
+
+    /**
      * redis配置
      */
-
+    String REDIS_SERVER_MODE = "redis.server.mode";
     String REDIS_MYMASTER = "redis.mymaster";
     String REDIS_SENTINELS = "redis.sentinels";
     String REDIS_SPLIT_PATTERN = "redis.split.pattern";
     String REDIS_PASSWORD = "redis.password";
     String REDIS_TIMEOUT = "redis.timeout";
+
+
+    /**
+     * redis单点配置
+     */
+    String REDIS_HOST = "redis.host";
+    String REDIS_PORT = "redis.port";
 
 
 }
